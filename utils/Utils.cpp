@@ -64,3 +64,23 @@ template <typename K>
 K   lerp(const K &a, const K &b, const f32 &t) {
     return a + (b - a) * t;
 }
+
+
+// EX04
+template <typename T>
+T   abs(const T& v) {
+    return v > 0 ? v : v * -1;
+}
+
+
+// EX05
+template <typename K>
+f32     angle_cos(const Vector<K> &u, const Vector<K> &v) {
+    if (u.length() != v.length()) {
+        throw std::invalid_argument("Vectors must have the same size");
+    }
+    if (u.length() < 1) {
+        throw std::invalid_argument("Vectors must have at least 1 element");
+    }
+    return Vector<f32>::dot(u, v) / (Vector<f32>::norm(u) * Vector<f32>::norm(v));
+}

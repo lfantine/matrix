@@ -70,6 +70,19 @@ class Vector {
         K dot(const Vector<K> &vector) const;
         static K dot(const Vector<K> &u, const Vector<K> &v);
 
+        // --- ex03 Norm ---
+
+        f32 norm() const;
+        f32 norm_1() const;
+        f32 norm_inf() const;
+
+        static f32 norm(const Vector<K> &v);
+        static f32 norm(const Vector<K> &u, const Vector<K> &v);
+        static f32 norm_1(const Vector<K> &v);
+        static f32 norm_1(const Vector<K> &u, const Vector<K> &v);
+        static f32 norm_inf(const Vector<K> &v);
+        static f32 norm_inf(const Vector<K> &u, const Vector<K> &v);
+
         // Operators overload
 
         const K& operator[](size_t index) const {

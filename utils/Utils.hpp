@@ -59,6 +59,15 @@ K   lerp(const K &a, const K &b, const f32 &t);
 template <typename K>
 K   lerp_fma(const K &a, const K &b, const f32 &t);
 
+// EX04
+
+template <typename T>
+T   abs(const T& v);
+
+// EX05
+
+template <typename K>
+f32     angle_cos(const Vector<K> &u, const Vector<K> &v);
 
 
 // ----------------------------------------------------------------

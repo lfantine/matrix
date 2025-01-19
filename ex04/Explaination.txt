@@ -1,0 +1,29 @@
+---------------------------------   Exercice 4   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+The Euclidian norm   |   Taxicab or Manhattan norm   |   Supremum norm
+
+are 3 differents type of norm to know the "length" of a vector
+
+- Euclidian form is square root of the sum of the square of the length of each dimmension  
+
+    : std::sqrt( std::sum( std::sqr( u[i] - v[i]  ) )  )
+
+
+- Taxicab is the sum of the length in each dimmension
+
+    : std::sum(  std::abs(u[i] - v[i]) )
+
+
+- Supremum norm is 
+    just the max difference in 1 dimmension ( with max fonction )
+
+
+triangle inequality ( the length of a vector is <= sum of the 2 other )
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                
+

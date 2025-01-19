@@ -1,0 +1,62 @@
+---------------------------------   Exercice 5   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+
+Cosinus -> Valeur donne a partir du 'sens' des vecteur {
+
+    -> si cos(..) proche de -1 => Les deux vecteur sont proche d'etre colineaire masi inverser
+
+    -> si cos(..) = 0    => ils sont orthogonaux (  perpendiculaire )
+
+    -> si cos(..) proche de 1 => il sont colineaire et dans la mem direction
+
+}
+
+
+CoVariance  -> La variation d'une variable par rapport a une autre 
+
+    : Cov(X, Y): 
+
+Coefficient de corrélation ( Pearson correlation coefficient ) -> permet l'interpration normaliser de la Covariance 
+
+    : ρ(X,Y)= Cov(X,Y) / σX * σY         (Ou σX et σY sont les écarts-types de X et Y )
+
+    + Le coefficient de corrélation de Pearson joue un rôle similaire au cosinus pour des variables aléatoires X et Y. 
+    Il mesure à quel point X et Y varient ensemble (relation linéaire).
+
+
+Variance == Cov(X,X) ->        ( 1 / n )  *  Sum(sqr(x[i] - moyenne(X)))
+
+    : donne un resultat Mis au carré de l'ecarts type par rapport a la moyenne des valeurs
+
+
+​Ecarts-types == Deviation Standard  ->   Comme la Variance mais mis a la racine pour rester sur la meme unité ( enlever le carré )
+
+    : Cela dit c'est toujours l'ecart moyen des valeurs a la moyenne =>   σX = sqrt(V(X))
+ 
+
+Esperance -> L’espérance (ou valeur moyenne attendue) est une valeur théorique qui représente 
+            la moyenne pondérée de toutes les valeurs possibles d’une variable aléatoire, en tenant 
+            compte de leurs probabilités. Elle donne une idée de la tendance centrale des résultats 
+            qu'on pourrait attendre en moyenne.
+
+    : Cf image pour calcul 
+
+ 
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :        Cosine
+
+
+
+Pour ce faire j'utilise la formule :
+
+cos(u, v) = 
+
+Dot_Product(u , v)  /   Dot_Product( Euclidian_Norm(u) ,  Euclidian_Norm(v) )
+
+sachant que le produit scalaire de nombre (ou vecteur a 1 dimmension ) correspond juste a une multiplication
