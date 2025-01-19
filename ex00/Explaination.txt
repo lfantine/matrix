@@ -1,0 +1,21 @@
+---------------------------------   Exercice 0   ------------------------------------
+
+To dos :
+
+-> Add 2 Vector / Matrix
+
+: It's basicly just adding all their value to the other one 
+
+    Exemple : v = {1,2,3,4,5}       u = {10,20,30,40,50}        then u + v = {11,22,33,44,55}
+
+
+-> Sub 2 Vector / Matrix 
+
+: It's the same but with substract
+
+    Exemple : v = {11,22,33,44,55}     u = {10,20,30,40,50}        then u - v = {1,2,3,4,5}  
+
+
+-> Multiply by a scalar
+
+: Just need to multiply all value by the scalar 

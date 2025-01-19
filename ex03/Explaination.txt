@@ -1,0 +1,15 @@
+---------------------------------   Exercice 3   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+Dot product is compute by summing the multiplication of value :
+
+a1*a2 + b1*b2 + c1*c2 ....
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                Dot Product
+
+
+used FMA to compute the dot product 

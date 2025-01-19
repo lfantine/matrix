@@ -1,0 +1,24 @@
+---------------------------------   Exercice 2  ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :
+
+-> Create linear_interpolation
+
+: The linear interpolation can give us the coordonate of a point on a line formed by 2 point and relative to a variable
+
+
+    warning : 
+        - The 2 point must be 2 distinct point or you can't know a line cos it could be everywhere on the plan
+
+
+
+function lerp ( take in inputs 2 points / vector and a scalar between[0,1])
+
+return the value / corrdonate of the point on the line / plan specifique to the inputs coordonate and scale by the scalar

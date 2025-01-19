@@ -1,0 +1,25 @@
+---------------------------------   Exercice 1   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+
+The FMA ( Fused Multiply-Add ) function is authorized and is a function  that make 
+the multiplication - addition more accuratly by doing it direclty without rounded between operation
+
+it's usable like this :
+
+FMA(a, b, c) => a * b + c
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :
+
+-> Create linear_combination 
+
+: The linear_combination is the vector created by combinating n vector multiply by their scalar 
+    => ( a * u + b * v + c * w . . .)
+
+It permit to obtain any vector on the plan ( if the 2 vector are not linear dependant ( on the same 'line' ) or v0 ( vector null ))
