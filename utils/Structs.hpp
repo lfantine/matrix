@@ -5,6 +5,7 @@
 #include <list>
 
 using f32 = float; // Define a float type in 32 bytes to sync with the subject f32 in RUST
+using u32 = uint32_t; // Define a unsigned int type in 32 bytes to sync with the subject u32 in RUST
 using matrixType = std::vector<std::vector<f32>>;
 
 /*                                      📒 Informations 📒
@@ -16,8 +17,8 @@ using matrixType = std::vector<std::vector<f32>>;
         + The shape of a tensor is defined by the number of dimensions it has and the number of elements in each dimension.
         
     -> Storage order :
-        - I choose to use row-order storage, 
-        which means that the elements of the matrix are stored row by row.
+        - I choose to use col-order storage, 
+        which means that the elements of the matrix are stored column by column ( a Vector is a column of my matrix ).
 
     -> Data type :
         - K is a template parameter that represents the data type of the elements in the matrix.
@@ -138,8 +139,13 @@ class Matrix {
     public :
         // Constructor
         Matrix(const std::vector<std::vector<K>> &data) {
-            for (size_t i = 0; i < data.size(); i++) {
-                _data.push_back(Vector<K>(data[i]));
+            // so the data is stored in column order but from row input
+            for (size_t i = 0; i < data[0].size(); i++) {
+                std::vector<K> vec;
+                for (size_t j = 0; j < data.size(); j++) {
+                    vec.push_back(data[j][i]);
+                }
+                _data.push_back(Vector<K>(vec));
             }
         };
         Matrix(const std::vector<Vector<K>> &data) : _data(data) {};
@@ -164,6 +170,17 @@ class Matrix {
 
         void add_with_fma(const Matrix<K> &matrix, const K &scalar);
 
+        // Ex07
+
+        Vector<K>   mul_vec(const Vector<K> &v);
+        Matrix<K>   mul_mat(const Matrix<K> &m);
+
+        static Vector<K>    mul_vec(const Matrix<K> &m, const Vector<K> &v);
+        static Matrix<K>    mul_mat(const Matrix<K> &a, const Matrix<K> &b);
+
+        // Ex08
+
+        K   trace() const;
 
         // Operators overload
 
@@ -192,6 +209,14 @@ class Matrix {
         Matrix<K> operator*(const K &scalar) const {
             Matrix<K> result(*this);
             return result.scl(scalar);
+        }
+
+        Vector<K> operator*(const Vector<K> &vector) const {
+            return Matrix<K>::mul_vec(*this, vector);
+        }
+
+        Matrix<K> operator*(const Matrix<K> &matrix) const {
+            return Matrix<K>::mul_mat(*this, matrix);
         }
 
         Matrix<K>& operator*=(const K &scalar) {

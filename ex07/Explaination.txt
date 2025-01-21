@@ -1,0 +1,30 @@
+---------------------------------   Exercice 4   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+Noether’s theorem : about special matrices in algebraic structure when they conserve some mathematical quantity =>  generalized "symmetry"
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                    Linear Map   &&   Matric Multiplication
+
+
+The formula of the multiplication of a vector byt a matrices ( or matrices by a vector ) give a vector like :
+
+pour A [     *  u [     =   v [
+    a , b         x             ax + by
+    c , d         y             cx + dy
+    ]             ]           ]
+
+On a :  x[a,c] + y[b,d] = [ax, ac] + [yb, yd]
+
+=> v : [
+    (ax + by)
+    (cx + dy)
+]
+
+( Cas pour un vector 2D mais il suffit de le mettre sur n pour avoir la meme dasn n'importe quelle dimmension )
+
+Pour des Matrices entre elles on fait la multiplication de la matrices A par chaque vecteur de la matrice B pour 
+obtenir chaque vecteur de la matrices result

@@ -40,8 +40,10 @@ int main() {
 
     std::cout << "result 2 : " << result2<< std::endl;
 
-    Matrix<f32> a3({{2.f, 1.f}, {3.f, 4.f}});
-    Matrix<f32> b3({{20.f, 10.f}, {30.f, 40.f}});
+    Matrix<f32> a3({{2.f, 1.f},\
+                    {3.f, 4.f}});
+    Matrix<f32> b3({{20.f, 10.f},\
+                    {30.f, 40.f}});
 
     Matrix<f32> result3 = lerp(a3, b3, 0.5f);
 

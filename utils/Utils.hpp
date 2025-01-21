@@ -70,6 +70,11 @@ template <typename K>
 f32     angle_cos(const Vector<K> &u, const Vector<K> &v);
 
 
+// EX06 
+
+template <typename K>
+Vector<K>   cross_product(const Vector<K> &u, const Vector<K> &v);
+
 // ----------------------------------------------------------------
 
 #include "Utils.cpp"

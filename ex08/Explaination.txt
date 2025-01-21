@@ -3,14 +3,11 @@
 // - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
 
 
-Le outer-product ou wedge-product 
-
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
 
-To dos :                Cross Product
+To dos :                'Trace'   d'une matrice        
 
-Pour 2 Vecteur en 3Dimmension, cela donne un vecteur orthogonal au plan former par ses deux vecteur et de longueur du Determinant 
-
-
+!! Dans une matrice carré !!   nommée A
+Somme des valeurs pour A[n][n]

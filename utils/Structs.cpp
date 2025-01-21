@@ -244,10 +244,19 @@ size_t    Matrix<K>::length() const {
 template <typename K>
 std::ostream& Matrix<K>::print(std::ostream &os) const {
     os << "\n[\n";
-    for (size_t i = 0; i < _data.size(); i++) {
-        os << _data[i]; // Ici on utilise l'overload de l'opérateur << de la classe Vector
-        if (i < _data.size() - 1) {
-            os << ",\n";
+    if (_data.size() > 0) {
+        for (size_t i = 0; i < _data[0].length(); i++) {
+            os << "[";
+            for (size_t j = 0; j < _data.size(); j++) {
+                os << _data[j][i];
+                if (j < _data.size() - 1) {
+                    os << ", ";
+                }
+            }
+            os << "]";
+            if (i < _data[0].length() - 1) {
+                os << "\n";
+            }
         }
     }
     os << "\n]";
@@ -308,4 +317,50 @@ void Matrix<K>::add_with_fma(const Matrix<K> &matrix, const K &scalar) {
     for (size_t i = 0; i < _data; i++) {
         _data[i].add_with_fma(matrix[i], scalar);
     }
+}
+
+template <typename K>
+Vector<K>  Matrix<K>::mul_vec(const Vector<K> &v) {
+    if (_data.size() <= 0 || v.length() != _data[0].length()) {
+        throw std::invalid_argument("Vector must have the same size as the vectors in the matrix");
+    }
+    Vector<K> result(_data[0] * v[0]); // _data[0] correspond a [a,c] et v[0] correspond a x donc ici on fait a[0]*x
+    for (size_t i = 1; i < _data.size(); i++) {  // j'ai plus qu'a l'additioner avec le reste des valeurs soit [b,d] * y sur i
+        result.add_with_fma(_data[i], v[i]);
+    }
+    return result;
+}
+
+template <typename K>
+Matrix<K>  Matrix<K>::mul_mat(const Matrix<K> &m) {
+    if (_data.size() <= 0 || m.length() != _data[0].length()) {
+        throw std::invalid_argument("Matrix must have the same size as the vectors in the matrix");
+    }
+    std::vector<Vector<K>> result;
+    for (size_t i = 0; i < m.length(); i++) {
+        result.push_back(this->mul_vec(m[i]));  // je fais la mul_vec masi pour chaque vecteur de la matrice m pour former result
+    }
+    return Matrix<K>(result);
+}
+
+template <typename K>
+Vector<K>   Matrix<K>::mul_vec(const Matrix<K> &m, const Vector<K> &v) {
+    return m.mul_vec(v);
+}
+
+template <typename K>
+Matrix<K>    Matrix<K>::mul_mat(const Matrix<K> &a, const Matrix<K> &b) {
+    return a.mul_mat(b);
+}
+
+template <typename K>
+K   Matrix<K>::trace() const {
+    if (!isSquare()) {
+        throw std::invalid_argument("Matrix must be square");
+    }
+    K trace = _data[0][0];
+    for (size_t i = 1; i < _data.size(); i++) {
+        trace += _data[i][i];
+    }
+    return trace;
 }

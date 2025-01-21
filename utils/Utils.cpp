@@ -84,3 +84,17 @@ f32     angle_cos(const Vector<K> &u, const Vector<K> &v) {
     }
     return Vector<f32>::dot(u, v) / (Vector<f32>::norm(u) * Vector<f32>::norm(v));
 }
+
+// EX06
+
+template <typename K>
+Vector<K>   cross_product(const Vector<K> &u, const Vector<K> &v) {
+    if (u.length() != 3 || v.length() != 3) {
+        throw std::invalid_argument("Vectors must have 3 elements");
+    }
+    return Vector<K>({
+        std::fma(u[1], v[2], -(v[1] * u[2])),
+        std::fma(u[2], v[0], -(v[2] * u[0])),
+        std::fma(u[0], v[1], - (v[0] * u[1]))
+    });
+}
