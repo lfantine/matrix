@@ -1,0 +1,44 @@
+---------------------------------   Exercice 10   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+il y a la < row-echelon form > :
+    -> forme simplifier d'une matrice a partir d'une suite d'operation sur les pivots
+
+et la < row-echelon simplified form > :
+    -> basiquement la meme mais toutes les valeurs hormis les pivots valent 0 
+        ( il faut re soustraire les lignes entre elles pour simplifier )
+
+pivot : premiere valeur non null d'une ligne
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                row-echelon form
+
+
+La < row-echelon form > est la forme trouver apres une serie d'operation de base
+
+Si cette form equivaut a I ( la matrice identite ) alors on peut reproduire cette suite 
+d'iperation sur la matrice identite pour trouver la forme inverce
+
+
+Process :
+
+Pour chaque ligne :
+
+    1 - Trouver le pivot
+
+    2 - simplifier la ligne pour avoir le pivot == 1 ( L = L * (1 / p )) avec p la valeur du pivot ( avant mutiliplication ) 
+    
+    3 - simplifier les lignes sous le pivot pour etre egale a 0 ( L1 = L1 - (L0 *  ( 1 / L1[x] ) ) ) avec L1[x] la valeur dew la ligne L1 sous le pivot
+
+
+
+
+    WARNING
+
+Dans cet exercice je ne prend pas en compte le cas ou le premier pivot n'est pas sur la premiere ligne
+    => Dans un tel cas il faudrait ( si la matrice est reversible ( cf Determinant )) interchanger les lignes pour avoir le bon ordre
+
+    -> Ces changement de ligne doivent egalement etre effectuer sur I dans le cadre de la matrice augmenter pour trouver A-1

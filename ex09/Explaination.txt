@@ -1,0 +1,15 @@
+---------------------------------   Exercice 9   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                Transpose of a Matrix 
+
+C'est la matrice qui est inverser par rapport a sa diagonal de la trace ( haut gauche vers bas droite )
+    => les ligne deviennent des columns
+
+

@@ -84,6 +84,15 @@ class Vector {
         static f32 norm_inf(const Vector<K> &v);
         static f32 norm_inf(const Vector<K> &u, const Vector<K> &v);
 
+
+        // ex10 
+
+        void    set(const size_t &index, const K v) {
+            if (index < _data.size()) {
+                _data[index] = v;
+            }
+        }
+
         // Operators overload
 
         const K& operator[](size_t index) const {
@@ -181,6 +190,14 @@ class Matrix {
         // Ex08
 
         K   trace() const;
+
+        // Ex09
+        
+        Matrix<K> transpose() const;
+
+        // Ex10
+
+        Matrix<K>   row_echelon() const;
 
         // Operators overload
 

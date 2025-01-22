@@ -364,3 +364,64 @@ K   Matrix<K>::trace() const {
     }
     return trace;
 }
+
+template <typename K>
+Matrix<K>   Matrix<K>::transpose() const {
+    std::vector<Vector<K>> data;
+    for (size_t i = 0; i < _data[0].length(); i++) {
+        std::vector<K> vec;
+        for (size_t j = 0; j < _data.size(); j++) {
+            vec.push_back(_data[j][i]);
+        }
+        data.push_back(Vector<K>(vec));
+    }
+    return Matrix<K>(data);
+}
+
+template <typename K>
+Matrix<K>   Matrix<K>::row_echelon() const {
+    /*
+        Cette fonction ne gere pas le cas ou les pivot ne sont pas dans le bon ordre en fonction des ligne 
+        Ce cas echeant il faut inverser les lignes pour trouver le bon positionement SI ET SI la matrice est reversible
+    */
+    if (_data.size() <= 0) {
+        throw std::invalid_argument("Matrix must have at least an element");
+    }
+    
+    Matrix<K>   mCopy(*this);
+
+    for (size_t i = 0; i < mCopy._data[0].length(); i++) {
+        // passage des lignes une par une 
+
+        for (size_t j = 0; j < mCopy._data.size(); j++) {
+            // passage de chaque element dans une ligne
+
+            if (mCopy._data[j][i] != 0) {
+                // pivot found for line !
+                // pivot is :  mCopy._data[j][i]
+
+                // modif de la ligne
+                const K saveV0 = mCopy._data[j][i];
+                for (size_t j1 = 0; j1 < mCopy._data.size(); j1++) {
+                    mCopy._data[j1].set(i, mCopy._data[j1][i] * (1 / saveV0));
+                }
+
+                // changement des lignes inferieur
+                for (size_t i1 = 0; i1 < mCopy._data[0].length(); i1++) {
+                    // Ici ca passe dans toutes les lignes superieur ET inferieures  ( row-echelon form  reducted / simplified )
+                    if (i1 == i || mCopy._data[j][i1] == 0) continue; // si la valeur en dessous du pivot est 0 pas besoin de toucher a la ligne
+                    const K saveValue = mCopy._data[j][i1];
+                    for (size_t j1 = 0; j1 < mCopy._data.size(); j1++) {
+                        // Acces a toutes les valeurs des lignes inferieures
+                        const K k = mCopy._data[j1][i1] - ( mCopy._data[j1][i] * saveValue);
+                        mCopy._data[j1].set(i1, k);
+                    }
+                }
+                break;
+            }
+            // si pas de pivot trouver rien a changer
+        }
+    }
+
+    return mCopy;
+}
