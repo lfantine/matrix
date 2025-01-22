@@ -75,6 +75,11 @@ f32     angle_cos(const Vector<K> &u, const Vector<K> &v);
 template <typename K>
 Vector<K>   cross_product(const Vector<K> &u, const Vector<K> &v);
 
+
+// EX14    Projection matrice
+
+Matrix<f32> projection(const f32 &fov, const f32 &ratio, const f32 &near, const f32 &far);
+
 // ----------------------------------------------------------------
 
 #include "Utils.cpp"

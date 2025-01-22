@@ -1,0 +1,22 @@
+---------------------------------   Exercice 4   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                Determinant
+
+
+I use a formula that work for any matrices as since the matrice is square
+
+BUT 
+
+I do the math by hand with size == 0 , 1 or 2 ( coz it's easy ) :
+
+    0 - return 1
+    1 - return a[0][0]
+    2 - return a*d - b*c
+

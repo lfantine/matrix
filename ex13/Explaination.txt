@@ -1,0 +1,22 @@
+---------------------------------   Exercice 13   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+There are 3 technique to compute matrix rank :
+
+ - Minor method
+
+ - Using echelon form ( I use this one )
+ 
+ - Using normal form
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                Rank
+
+
+Pour le calculer j'utilise la methode avec la forme echelone
+
+je passe ma matrice en forme echelonner et je compte le noombre de ligne non null
+

@@ -425,3 +425,95 @@ Matrix<K>   Matrix<K>::row_echelon() const {
 
     return mCopy;
 }
+
+template <typename K>
+const Matrix<K> getMinorMatrixForDeterminant(const Matrix<K> &m, size_t row, size_t col) {
+    std::vector<std::vector<K>> data;
+    for (size_t i = 0; i < m.length(); i++) {
+        if (i == row) {
+            continue;
+        }
+        std::vector<K> vec;
+        for (size_t j = 0; j < m[i].length(); j++) {
+            if (j == col) {
+                continue;
+            }
+            vec.push_back(m[j][i]);
+        }
+        data.push_back(vec);
+    }
+    return Matrix<K>(data);
+}
+
+template <typename K>
+const K   Matrix<K>::determinant() const {
+    if (!isSquare()) {
+        throw std::invalid_argument("Matrix must be square");
+    }
+    if (_data.size() == 1) {
+        return _data[0][0];
+    }
+    if (_data.size() == 2) {
+        return _data[0][0] * _data[1][1] - _data[0][1] * _data[1][0];
+    }
+
+
+    K det = 0;
+    for (size_t i = 0; i < _data.size(); i++) {
+        K sign = i % 2 == 0 ? 1 : -1;
+        det += sign * _data[0][i] * getMinorMatrixForDeterminant(*this, i, 0).determinant();
+    }
+    return det;
+}
+
+// ex12
+
+template <typename K>
+Matrix<K>   Matrix<K>::inverse() const {
+    if (!isSquare()) {
+        throw std::invalid_argument("Matrix must be square");
+    }
+    K det = determinant();
+    if (det == 0) {
+        throw std::invalid_argument("Matrix must be reversible");
+    }
+
+    Matrix<K>   mCopy(*this);
+
+    size_t n = mCopy.length();
+    for (size_t i = 0; i < n; i++) {
+        std::vector<K> vec;
+        for (size_t j = 0; j < n; j++) {
+            vec.push_back(i == j ? 1 : 0);
+        }
+        mCopy._data.push_back(Vector<K>(vec));
+    }
+
+    mCopy = mCopy.row_echelon();
+
+    std::vector<std::vector<K>> data;
+
+    for (size_t i = 0; i < n; i++) {
+        std::vector<K> vec;
+        for (size_t j = n; j < mCopy.length(); j++) {
+            vec.push_back(mCopy[j][i]);
+        }
+        data.push_back(vec);
+    }
+
+    return Matrix<K>(data);
+}
+
+template <typename K>
+usize   Matrix<K>::rank() const {
+    Matrix<K>   mCopy(*this);
+    mCopy = mCopy.row_echelon();
+    mCopy = mCopy.transpose(); // coz my vector are columns and not rows ( and it need to check with rows )
+    usize rank = 0;
+    for (size_t i = 0; i < mCopy.length(); i++) {
+        if (mCopy[i].norm_inf() != 0) {
+            rank++;
+        }
+    }
+    return rank;
+}

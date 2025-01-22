@@ -7,6 +7,7 @@
 using f32 = float; // Define a float type in 32 bytes to sync with the subject f32 in RUST
 using u32 = uint32_t; // Define a unsigned int type in 32 bytes to sync with the subject u32 in RUST
 using matrixType = std::vector<std::vector<f32>>;
+using usize = size_t;
 
 /*                                      📒 Informations 📒
 
@@ -71,7 +72,7 @@ class Vector {
         K dot(const Vector<K> &vector) const;
         static K dot(const Vector<K> &u, const Vector<K> &v);
 
-        // --- ex03 Norm ---
+        // --- ex04 Norm ---
 
         f32 norm() const;
         f32 norm_1() const;
@@ -92,6 +93,8 @@ class Vector {
                 _data[index] = v;
             }
         }
+
+
 
         // Operators overload
 
@@ -198,6 +201,18 @@ class Matrix {
         // Ex10
 
         Matrix<K>   row_echelon() const;
+
+        // Ex11
+
+        const K   determinant() const;
+
+        // Ex12
+
+        Matrix<K>   inverse() const;
+
+        // Ex13
+
+        usize   rank() const;
 
         // Operators overload
 

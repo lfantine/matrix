@@ -98,3 +98,14 @@ Vector<K>   cross_product(const Vector<K> &u, const Vector<K> &v) {
         std::fma(u[0], v[1], - (v[0] * u[1]))
     });
 }
+
+// EX14   Projection matrice
+
+Matrix<f32> projection(const f32 &fov, const f32 &ratio, const f32 &near, const f32 &far) {
+    return Matrix<f32>({
+        { 1 / (std::tan(fov / 2) * ratio), 0, 0, 0},
+        {0, 1 / std::tan(fov / 2), 0, 0},
+        {0, 0, -((far + near) / (far - near)), -((2 * (far + near)) / (far - near))},
+        {0, 0, -1, 0}
+    }).transpose();
+}

@@ -1,0 +1,23 @@
+---------------------------------   Exercice 12   ------------------------------------
+
+// - - - - - - - - - - - - - - - -  ⚠️ To Know ⚠️  - - - - - - - - - - - - - - - - - - //
+
+Peut etre interesant : Moore-Penrose pseudo-inverse
+
+Singular Value Decomposition algorythme
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+
+To dos :                       Inverse
+
+
+First :
+
+    -> Use the Determinant to know if the matrix is reversible ( if D(A) != 0 we can found reverse )
+
+
+Second :
+
+    -> Use the same property as row-echelon form to found reverse
+
