@@ -26,7 +26,5 @@ int main() {
     std::cout << " Vector reshape : " << vector.reshape(2, 3) << std::endl;
     std::cout << " Matrix reshape : " << matrix.flatten() << std::endl;
 
-    std::cout << color("\nOther test following : ", CYAN + UNDERLINE) << std::endl;
-
     return 0;
 }

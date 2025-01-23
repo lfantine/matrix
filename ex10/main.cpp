@@ -41,5 +41,13 @@ int main() {
 
     std::cout << "\nrow-echelon form of m3 : \n" << m3.row_echelon() << std::endl;
 
+    Matrix<f32> m4({
+        {2.f, 3.f, 4.f},
+        {0.f, 5.f, 6.f},
+        {0.f, 0.f, 7.f}
+    });
+
+    std::cout << "row-echelon form of m4 : \n" << m4.row_echelon() << std::endl;
+
     return 0;
 }

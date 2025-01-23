@@ -19,7 +19,7 @@ int main() {
 
     Matrix<f32> matrix(data);
 
-    std::cout << "Matrix : " << matrix << std::endl;
+    std::cout << "Matrix : " << matrix << std::endl; // c'est normal que j'ai une matrice a l'envers au depart car si je met des Vector<K> elle les prend comme les column
 
     Matrix<f32> transposed = matrix.transpose();
 
