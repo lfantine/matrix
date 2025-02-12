@@ -10,7 +10,7 @@
 // for the Fused multiply-add (FMA) function I need to import cmath
 #include <cmath>
 
-// function is accessible with std::fma(a, b, c) with a * b + c 
+// function is accessible with fma(a, b, c) with a * b + c 
 
 
 // ----------------------------------------------------------------

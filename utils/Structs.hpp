@@ -4,6 +4,9 @@
 #include <vector>
 #include <list>
 
+// for the POW i need to import cmath
+#include <cmath>
+
 using f32 = float; // Define a float type in 32 bytes to sync with the subject f32 in RUST
 using u32 = uint32_t; // Define a unsigned int type in 32 bytes to sync with the subject u32 in RUST
 using matrixType = std::vector<std::vector<f32>>;
@@ -215,6 +218,13 @@ class Matrix {
         usize   rank() const;
 
         // Operators overload
+
+        Matrix<K>& operator=(const Matrix<K>& other) {
+            if (this != &other) {  // Eviter l'auto-assignation
+                _data = other._data;  // Copier les données
+            }
+            return *this;  // Retourner l'objet courant
+        }
 
         const Vector<K>& operator[](size_t index) const {
             return _data[index];

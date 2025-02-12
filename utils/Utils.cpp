@@ -93,9 +93,9 @@ Vector<K>   cross_product(const Vector<K> &u, const Vector<K> &v) {
         throw std::invalid_argument("Vectors must have 3 elements");
     }
     return Vector<K>({
-        std::fma(u[1], v[2], -(v[1] * u[2])),
-        std::fma(u[2], v[0], -(v[2] * u[0])),
-        std::fma(u[0], v[1], - (v[0] * u[1]))
+        static_cast<K>(fma(u[1], v[2], -(v[1] * u[2]))),
+        static_cast<K>(fma(u[2], v[0], -(v[2] * u[0]))),
+        static_cast<K>(fma(u[0], v[1], - (v[0] * u[1])))
     });
 }
 

@@ -5,6 +5,7 @@
 #include "../utils/Utils.hpp"
 
 #include <iomanip> // Pour std::setprecision et std::fixed
+#include <cmath>
 
 using vector_list = std::vector<Vector<f32>>;
 using coef_list = std::vector<f32>;

@@ -99,7 +99,7 @@ void    Vector<K>::add_with_fma(const Vector<K> &vector, const K &scalar) {
         throw std::invalid_argument("Vectors must have the same size");
     }
     for (size_t i = 0; i < _data.size(); i++) {
-        _data[i] = std::fma(vector[i], scalar, _data[i]);
+        _data[i] = fma(vector[i], scalar, _data[i]);
     }
 }
 
@@ -111,7 +111,7 @@ K   Vector<K>::dot(const Vector<K> &vector) const {
     }
     K  dot = _data[0] * vector[0];
     for (size_t i = 1; i < _data.size(); i++) {
-        dot = std::fma(_data[i], vector[i], dot);
+        dot = fma(_data[i], vector[i], dot);
     }
     return dot;
 }
@@ -128,10 +128,10 @@ f32 Vector<K>::norm() const {
     }
     f32 r = 0;
     for (size_t i = 0; i < this->length(); i++) {
-        //r += std::pow(this->operator[](i), 2);    // here i can put *this[i] cos i consider the start of my vector is at the base of my plan
-        r = std::fma(this->operator[](i), this->operator[](i), r);
+        //r += pow(this->operator[](i), 2);    // here i can put *this[i] cos i consider the start of my vector is at the base of my plan
+        r = fma(this->operator[](i), this->operator[](i), r);
     }
-    return std::pow(r, 0.5f);
+    return pow(r, 0.5f);
 }
 
 template <typename K>
@@ -142,7 +142,7 @@ f32 Vector<K>::norm_1() const {
     f32 r = 0;
     for (size_t i = 0; i < this->length(); i++) {
         //r += this->operator[](i) < 0 ? this->operator[](i) * -1 : this->operator[](i);  // same 
-        r = std::fma(this->operator[](i), this->operator[](i) < 0 ? -1 : 1, r);
+        r = fma(this->operator[](i), this->operator[](i) < 0 ? -1 : 1, r);
     }
     return r;
 }
@@ -154,7 +154,7 @@ f32 Vector<K>::norm_inf() const {
     }
     f32 r = abs(_data[0]);
     for (size_t i = 1; i < _data.size(); i++) {
-        r = std::max(r, abs(_data[i]));
+        r = std::max(r, static_cast<f32>(abs(_data[i])));
     }
     return r;
 }
@@ -174,10 +174,10 @@ f32 Vector<K>::norm(const Vector<K> &u, const Vector<K> &v) {
     }
     f32 r = 0;
     for (size_t i = 0; i < u.length(); i++) {
-        //r += std::pow((v[i] - u[i]), 2);    // here i can put *this[i] cos i consider the start of my vector is at the base of my plan
-        r = std::fma((v[i] - u[i]), (v[i] - u[i]), r);
+        //r += pow((v[i] - u[i]), 2);    // here i can put *this[i] cos i consider the start of my vector is at the base of my plan
+        r = fma((v[i] - u[i]), (v[i] - u[i]), r);
     }
-    return std::pow(r, 0.5f);
+    return pow(r, 0.5f);
 }
 
 template <typename K>
@@ -197,7 +197,7 @@ f32 Vector<K>::norm_1(const Vector<K> &u, const Vector<K> &v) {
     for (size_t i = 0; i < u.length(); i++) {
         //f32 t = (v[i] - u[i]); 
         //r += t < 0 ? t * -1 : t;
-        r = std::fma((v[i] - u[i]), (v[i] - u[i]) < 0 ? -1 : 1, r);
+        r = fma((v[i] - u[i]), (v[i] - u[i]) < 0 ? -1 : 1, r);
     }
     return r;
 }
@@ -217,7 +217,7 @@ f32 Vector<K>::norm_inf(const Vector<K> &u, const Vector<K> &v) {
     }
     f32 r = abs(v[0] - u[0]);
     for (size_t i = 1; i < u.length(); i++) {
-        r = std::max(r, abs(v[i] - u[i]));
+        r = std::max(r, static_cast<f32>(abs(v[i] - u[i])));
     }
     return r;
 }

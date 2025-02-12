@@ -17,7 +17,7 @@ are 3 differents type of norm to know the "length" of a vector
 
 
 - Supremum norm is 
-    just the max difference in 1 dimmension ( with max fonction )
+    just the std::max difference in 1 dimmension ( with std::max fonction )
 
 
 triangle inequality ( the length of a vector is <= sum of the 2 other )
